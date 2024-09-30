@@ -37,8 +37,8 @@ function App() {
             <Route index element={<Home />} />
             {/* <Route path="/sign-in" element={<Navigate to="https://client.newlean14.store/sign-in" replace />} /> */}
             {/* <Route path="/sign-up" element={<Navigate to="https://client.newlean14.store/sign-up" replace />} /> */}
-            <Route path="/about-us" element={<About />} />
-            <Route path="/contacts" element={<Contact />} />
+            <Route path="/sign-in" element={<About />} />
+            <Route path="/sign-up" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/customer-data-processing" element={<CustomerData />} />
             <Route path="/complaints" element={<Complaints />} />

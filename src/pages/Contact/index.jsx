@@ -15,7 +15,7 @@ function Contact() {
         <div className={S.container}>
           <div className={S.inner}>
             <div className={S.content}>
-              <h1 className={S.title}>Contact us</h1>
+              <h1 className={S.title}>Sign Up</h1>
               <p className={S.text}>We are happy to answer any of your questions</p>
             </div>
             <ContactForm />

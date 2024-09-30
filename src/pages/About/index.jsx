@@ -10,7 +10,7 @@ function About() {
       <main className={S.main}>
         <div className={S.container}>
           <div className={S.title}>
-            <h1>About us</h1>
+            <h1>Sign In</h1>
           </div>
           <div className={S.text}>
             <p>
