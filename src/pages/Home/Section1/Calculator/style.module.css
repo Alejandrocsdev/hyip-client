@@ -1,0 +1,190 @@
+.container {
+  width: 48.035714%;
+  padding: 2rem 1.5rem;
+  background-image: url('/webp/form-bg.webp');
+  background-position: center bottom;
+  background-size: cover;
+  border-radius: 3.75rem 1.5rem 1.5rem;
+  position: relative;
+}
+
+/* 投資計劃 */
+.plans {
+  padding: .25rem;
+  margin-bottom: 1rem;
+  background-color: #f1f3f9;
+  border-radius: 4rem;
+  display: flex;
+}
+
+.plans>div {
+  width: 100%;
+  padding: .5rem;
+  color: #809498;
+  border-radius: 3.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  color: #0c2f37 !important;
+  background-color: white !important;
+}
+
+/* 收益轉換 */
+.converter {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  border: .0625rem solid #00000014;
+  border-radius: .75rem;
+  box-shadow: 0 .75rem 2rem #655d7a0a, 0 1.5rem 1rem -.75rem #655d7a0a;
+  position: relative;
+}
+
+.converter .label {
+  margin-bottom: .4375rem;
+  color: #505a63;
+  font-size: .75rem;
+  line-height: 1.125rem;
+  text-align: left;
+  pointer-events: none;
+}
+
+.converter .main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.converter .main .unit {
+  font-weight: 500;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+}
+
+.converter .main .unit img {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.converter .main .unit span {
+  pointer-events: none;
+}
+
+.converter .main label {
+  width: 50%;
+  display: inline-flex;
+  cursor: text;
+}
+
+.converter .main label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 8.25rem;
+  cursor: text;
+}
+
+.converter .main label input {
+  width: 100%;
+  color: #191c1f;
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+  position: relative;
+}
+
+.converter .main label input:focus {
+  outline: none;
+}
+
+/* 計算結果 */
+.result {
+  margin-bottom: 1.5rem;
+  color: #2b2b3b;
+}
+
+.result>p {
+  margin: 0 0 0.75rem 0;
+  color: #99a1ae;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.result>p>span:nth-child(1) {
+  color: #99a1ae;
+  line-height: 1.5rem;
+  text-wrap: nowrap;
+}
+
+.result>p>span:nth-child(2) {
+  color: #191c1f;
+  line-height: 1.5rem;
+  text-wrap: nowrap;
+}
+
+/* 註冊按鈕 */
+.signUp {
+  width: 100%;
+  padding: .875rem 1.875rem;
+  background-color: #FFD45A;
+  color: black;
+  border-radius: .5rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  transition: background-color .3s ease 0s;
+  cursor: pointer;
+}
+
+.signUp:hover {
+  color: white;
+  background-color: #041d33;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    border-radius: 2rem 1rem 1rem;
+    margin-bottom: 3.4375rem;
+    max-width: 29.375rem;
+    width: 49.788136%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 440px) {
+  .converter .main label input {
+    font-size: 1.125rem;
+  }
+
+  .result>p {
+    font-size: .75rem;
+  }
+
+  .result>p>span {
+    font-size: .75rem;
+  }
+}

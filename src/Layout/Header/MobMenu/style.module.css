@@ -1,0 +1,277 @@
+.menuBtn {
+  width: 2.625rem;
+  height: 2.25rem;
+  background-color: #ffffff1f;
+  border-radius: .5625rem;
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.menuBtn::before,
+.menuBtn span,
+.menuBtn::after {
+  content: "";
+  height: .125rem;
+  width: 1.375rem;
+  background-color: #fff;
+  border-radius: .125rem;
+  position: absolute;
+  left: .625rem;
+  transition: all .5s ease 0s;
+  pointer-events: none;
+}
+
+.menuBtn::before {
+  top: .625rem;
+}
+
+.menuBtn span {
+  top: calc(50% - .0625rem);
+}
+
+.menuBtn::after {
+  bottom: .625rem;
+}
+
+/* 切換樣式 */
+.btnOpen {
+  background-color: transparent;
+  z-index: 1000;
+}
+
+/* 切換樣式 */
+.btnOpen::before {
+  top: calc(50% - .0625rem);
+  transform: rotate(45deg);
+  background-color: #111b29;
+}
+
+/* 切換樣式 */
+.btnOpen span {
+  transform: scale(0);
+}
+
+/* 切換樣式 */
+.btnOpen::after {
+  bottom: calc(50% - .0625rem);
+  transform: rotate(-45deg);
+  background-color: #111b29;
+}
+
+.menuBody {
+  max-width: 23.4375rem;
+  width: 100%;
+  height: 100vh;
+  color: #111b29;
+  background-color: #fff;
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  z-index: 10;
+  transition: all .5s ease-in-out 0s;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* 切換樣式 */
+.bodyOpen {
+  pointer-events: all;
+  opacity: 1;
+  right: 0vw;
+}
+
+.menuBody .top {
+  padding: 1.5rem;
+  border-bottom: .0625rem solid #e3e7ef;
+  display: block;
+}
+
+.menuBody .top .logo {
+  display: flex;
+}
+
+.menuBody .top .logo img {
+  margin-right: 5px;
+  pointer-events: none;
+  aspect-ratio: 194 / 20;
+  object-fit: cover;
+}
+
+.menuBody .top .logo span {
+  color: #FFD45A;
+  font-weight: 700;
+  position: relative;
+  bottom: 1px;
+  user-select: none;
+}
+
+.menuBody .inner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menuBody .inner .service {
+  padding: 1rem 1.25rem 1.25rem;
+  background-color: #fff;
+  border-bottom: .0625rem solid #e3e7ef;
+}
+
+.menuBody .inner .service p {
+  margin-bottom: 1rem;
+  color: #97a3b7;
+  font-size: .75rem;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.menuBody .inner .service ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2rem;
+}
+
+.menuBody .inner .service ul li a {
+  padding: .5rem .75rem;
+  color: #677489;
+  font-size: .75rem;
+  line-height: 1.5;
+  border-radius: .5rem;
+  display: flex;
+  gap: 1rem;
+  transition: background-color .3s ease 0s;
+}
+
+.menuBody .inner .service ul li a:hover {
+  background-color: #f1f3f9;
+}
+
+.menuBody .inner .service ul li a img {
+  width: 24px;
+  height: 24px;
+}
+
+.menuBody .inner .service ul li a span {
+  color: #677489;
+  font-size: .75rem;
+  line-height: 1.5;
+  font-weight: 700;
+
+  display: block;
+  color: #111b29;
+  font-size: 1rem;
+  margin-bottom: .125rem;
+}
+
+.menuBody .inner .info {
+  padding: 1.25rem 0;
+  border-bottom: .0625rem solid #e3e7ef;
+  display: block;
+}
+
+.menuBody .inner .info li a {
+  padding: .5625rem 1.5rem;
+  width: 100%;
+  font-weight: 700;
+  gap: 1rem;
+  line-height: 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: .5rem;
+  transition: background-color .3s ease 0s;
+}
+
+.menuBody .inner .info li a span {
+  color: rgb(17, 27, 41);
+}
+
+.menuBody .inner .language {
+  position: relative;
+}
+
+.menuBody .inner .language>button {
+  padding: 1rem 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .4375rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.menuBody .inner .language button span {
+  text-transform: uppercase;
+}
+
+.menuBody .inner .language ul {
+  width: 100%;
+  padding: 1rem 0;
+  max-height: 12.5rem;
+  color: #1e1e1e;
+  background-color: #fff;
+  border-top: .0625rem solid #e3e7ef;
+  border-bottom: .0625rem solid #e3e7ef;
+}
+
+.menuBody .inner .language ul li {
+  margin-top: .875rem;
+}
+
+.menuBody .inner .language ul li button {
+  padding: 0 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .4375rem;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: .875rem;
+  line-height: 1.375rem;
+}
+
+.menuBody .inner .language ul li button .langFlag {
+  width: 24px;
+  height: 24px;
+}
+
+/* 切換樣式 */
+.langActive {
+  font-weight: 700;
+  color: #ff5f45;
+}
+
+.bottom {
+  margin: auto;
+  padding: 10px 15px;
+}
+
+.bottom img {
+  height: 100%;
+  background-size: contain;
+}
+
+@media (max-width: 1000px) {
+  .menuBtn {
+    display: block;
+  }
+
+  .menuBody {
+    display: flex;
+  }
+}
+
+@media (max-width: 440px) {
+  .menuBody {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+  }
+}
