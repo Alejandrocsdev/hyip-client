@@ -1,8 +1,9 @@
 // 樣式模組 (css module)
 import S from './style.module.css'
 // 函式庫 (library)
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useState, useRef, useEffect } from 'react'
+// 自訂函式 (custom function)
 import useBodyScroll from '../../../hooks/useBodyScroll'
 import useClickOutside from '../../../hooks/useClickOutside'
 // 圖檔 (image)
@@ -14,18 +15,24 @@ import globeSvg from '../../../assets/img/icon/globe.svg'
 import mkmSvg from '../../../assets/img/organization/mkm.svg'
 // 組件 (component)
 import Logo from '../../../components/Logo'
-import LangFlag from '../../../components/LangFlag'
+import Anchor from '../../../components/Anchor'
+import LangSwitch from '../../../components/LangSwitch'
 
 // 選單組件
 function MobMenu({ onBackdropToggle }) {
+  // 語言翻譯 / 語言設定
+  const { t, i18n } = useTranslation()
+  // 當前語言
+  const currentLang = i18n.language
+
+  // 狀態控制
   const [isOpened, setIsOpened] = useState(false)
-  const [activeLang, setActiveLang] = useState('en')
+  const states = { isOpened, setIsOpened }
+  // 元素引用
   const containerRef = useRef(null)
   const menuRef = useRef(null)
 
   const toggleMenu = () => setIsOpened((prev) => !prev)
-
-  const switchLang = (lang) => setActiveLang(lang)
 
   useBodyScroll(isOpened)
 
@@ -48,68 +55,49 @@ function MobMenu({ onBackdropToggle }) {
       >
         {/* 上方 */}
         <div className={S.top}>
-          <Logo type="crypto" color="black" />
+          <Logo site="crypto" color="black" onClick={handleLinkClick} />
         </div>
         <div className={S.inner}>
           {/* 登入 & 登出 */}
           <div className={S.service}>
-            <p className={S.title}>User</p>
+            <p className={S.title}>{t('user')}</p>
             <ul>
               <li>
-                <Link to="/sign-in">
+                <Anchor ext="https://client.newlean14.store/sign-in">
                   <img src={signInSvg} />
-                  <span>Sign In</span>
-                </Link>
+                  <span>{t('signIn')}</span>
+                </Anchor>
               </li>
               <li>
-                <Link to="/sign-up">
+                <Anchor ext="https://client.newlean14.store/sign-up">
                   <img src={signUpSvg} />
-                  <span>Sign Up</span>
-                </Link>
+                  <span>{t('signUp')}</span>
+                </Anchor>
               </li>
             </ul>
           </div>
           {/* 公司資訊 */}
           <ul className={S.info}>
             <li>
-              <Link to="about-us" onClick={handleLinkClick}>
+              <Anchor int="/about-us" onClick={handleLinkClick}>
                 <img src={aboutUsSvg} />
-                <span>About Us</span>
-              </Link>
+                <span>{t('aboutUs')}</span>
+              </Anchor>
             </li>
             <li>
-              <Link to="contacts" onClick={handleLinkClick}>
+              <Anchor int="/contacts" onClick={handleLinkClick}>
                 <img src={contactsSvg} />
-                <span>Contact</span>
-              </Link>
+                <span>{t('contacts')}</span>
+              </Anchor>
             </li>
           </ul>
           {/* 語言 */}
           <div className={S.language}>
             <button>
               <img src={globeSvg} />
-              <span>{activeLang}</span>
+              <span>{currentLang}</span>
             </button>
-            <ul>
-              <li>
-                <button onClick={() => switchLang('en')}>
-                  <LangFlag className={S.langFlag} type="us" />
-                  <p className={activeLang === 'en' ? S.langActive : ''}>English</p>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => switchLang('ru')}>
-                  <LangFlag className={S.langFlag} type="ru" />
-                  <p className={activeLang === 'ru' ? S.langActive : ''}>Русский</p>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => switchLang('et')}>
-                  <LangFlag className={S.langFlag} type="ee" />
-                  <p className={activeLang === 'et' ? S.langActive : ''}>Eesti</p>
-                </button>
-              </li>
-            </ul>
+            <LangSwitch type="mob" states={states} currentLang={currentLang} />
           </div>
         </div>
         {/* 下方 */}

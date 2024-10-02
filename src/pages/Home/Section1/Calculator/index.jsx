@@ -1,7 +1,9 @@
 // 樣式模組 (css module)
 import S from './style.module.css'
 // 函式庫 (library)
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+// 組件 (component)
+import Anchor from '../../../../components/Anchor'
 import { useState, useRef, useMemo } from 'react'
 // 圖檔 (image)
 import usdtSvg from '../../../../assets/img/element/usdt.svg'
@@ -13,6 +15,9 @@ const plans = {
 
 // 計算機組件
 function Calculator() {
+  // 語言
+  const { t } = useTranslation()
+
   // 狀態變數
   const [activePlan, setActivePlan] = useState('basic')
   const [inputValue, setInputValue] = useState(plans[activePlan].input)
@@ -67,7 +72,7 @@ function Calculator() {
   // 處理變化更新
   const handleChange = (e) => {
     // 移除 '數字'
-    let value = e.target.value.replace(/[^0-9]/g, '') 
+    let value = e.target.value.replace(/[^0-9]/g, '')
     // 移除 '前導0'
     value = value.replace(/^0+(?!$)/, '')
 
@@ -89,7 +94,7 @@ function Calculator() {
     const clamped = clampedValue(inputValue)
     const rounded = roundedValue(clamped)
     const formatted = formattedValue(rounded, ' ')
-    
+
     setInputValue(formatted)
   }
 
@@ -101,18 +106,18 @@ function Calculator() {
           className={`${activePlan === 'basic' ? S.active : ''}`}
           onClick={() => togglePlan('basic')}
         >
-          Basic
+          {t('basic')}
         </div>
         <div
           className={`${activePlan === 'elite' ? S.active : ''}`}
           onClick={() => togglePlan('elite')}
         >
-          Elite
+          {t('elite')}
         </div>
       </div>
       {/* 收益轉換 */}
       <div className={S.converter}>
-        <div className={S.label}>Amount (X100)</div>
+        <div className={S.label}>{t('amount')} (X100)</div>
         <div className={S.main}>
           <div className={S.unit}>
             <img src={usdtSvg} />
@@ -135,18 +140,18 @@ function Calculator() {
       {/* 計算結果 */}
       <div className={S.result}>
         <p>
-          <span>Daily Profit (%):</span>
+          <span>{t('dailyProfit')} (%):</span>
           <span>{ratioValue}%</span>
         </p>
         <p>
-          <span>Total Profit (USDT):</span>
+          <span>{t('dailyProfit')} (USDT):</span>
           <span>{totalProfit} USDT</span>
         </p>
       </div>
       {/* 註冊按鈕 */}
-      <Link className={S.signUp} to="sign-up">
-        Sign Up
-      </Link>
+      <Anchor style={S.signUp} ext="https://client.newlean14.store/sign-up">
+        {t('signUp')}
+      </Anchor>
     </div>
   )
 }

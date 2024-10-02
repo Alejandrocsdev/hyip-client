@@ -1,15 +1,22 @@
 // 樣式模組 (css module)
 import S from './style.module.css'
 // 函式庫 (library)
-import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 // 組件 (component)
 import Logo from '../../components/Logo'
+import Anchor from '../../components/Anchor'
 import FacebookSvg from '../../components/Svg/FacebookSvg'
 import TwitterSvg from '../../components/Svg/TwitterSvg'
 import InstagramSvg from '../../components/Svg/InstagramSvg'
 
 // 頁尾組件
 function Footer() {
+  // 語言
+  const { t } = useTranslation()
+
+  const { lang } = useParams()
+
   return (
     <>
       <footer className={S.footer}>
@@ -18,46 +25,46 @@ function Footer() {
           <div className={S.body}>
             {/* 社群 */}
             <div className={S.social}>
-              <Logo type="crypto" color="white" />
-              <Logo type="origin" color="white" />
+              <Logo site="crypto" color="white" />
+              <Logo site="origin" color="white" />
               <div className={S.icons}>
-                <Link to="https://www.facebook.com/moneyexpresslv" target="_blank">
+                <Anchor ext="https://www.facebook.com/moneyexpresslv">
                   <FacebookSvg className={S.icon} />
-                </Link>
-                <Link to="https://x.com/MONEYEXPRESSLV" target="_blank">
+                </Anchor>
+                <Anchor ext="https://x.com/MONEYEXPRESSLV">
                   <TwitterSvg className={S.icon} />
-                </Link>
-                <Link to="https://www.instagram.com/moneyexpress.lv/" target="_blank">
+                </Anchor>
+                <Anchor ext="https://www.instagram.com/moneyexpress.lv/">
                   <InstagramSvg className={S.icon} />
-                </Link>
+                </Anchor>
               </div>
             </div>
             {/* 資訊 */}
             <div className={S.info}>
               {/* 關於 */}
               <div className={S.item}>
-                <h5 className={S.title}>About us</h5>
+                <h5 className={S.title}>{t('aboutUs')}</h5>
                 <ul>
                   <li>
-                    <Link to="/about-us">Money Express Crypto</Link>
+                    <Anchor int="/about-us">{t('aboutCompany')}</Anchor>
                   </li>
                   <li>
-                    <Link to="/contacts">Contacts</Link>
+                    <Anchor int="/contacts">{t('contacts')}</Anchor>
                   </li>
                 </ul>
               </div>
               {/* 聯繫 */}
               <div className={S.item}>
-                <h5 className={S.title}>Contacts</h5>
+                <h5 className={S.title}>{t('contacts')}</h5>
                 <address>
                   <div className={S.contacts}>
-                    <a href="tel:+3726609010">+372 6 609 010</a>
-                    <a href="mailto:info@moneyexpresscrypto.ee">info@moneyexpresscrypto.ee</a>
+                    <Anchor ext="+3726609010" phone>+372 6 609 010</Anchor>
+                    <Anchor ext="info@moneyexpresscrypto.ee" email>info@moneyexpresscrypto.ee</Anchor>
                   </div>
                   <p>
                     MoneyExpress OÜ
                     <br />
-                    Reg. number: 11557160
+                    {t('registerNumber')}: 11557160
                     <br />
                     KMKR: EE101342285
                     <br />
@@ -71,11 +78,11 @@ function Footer() {
           <div className={S.bottom}>
             <p>© MONEY EXPRESS © All Rights Reserved</p>
             <div className={S.privacy}>
-              <Link to="/privacy-policy">Terms and conditions</Link>
+              <Anchor int="/privacy-policy">{t('privacyPolicy')}</Anchor>
               <span> | </span>
-              <Link to="/customer-data-processing">Customer data processing procedure</Link>
+              <Anchor int="/customer-data-processing">{t('customerDataProcessing')}</Anchor>
               <span> | </span>
-              <Link to="/complaints">Complaints resolution procedure</Link>
+              <Anchor int="/complaints">{t('complaints')}</Anchor>
             </div>
           </div>
         </div>

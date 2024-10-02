@@ -1,0 +1,12 @@
+.container {
+  width: 500px;
+  padding: 2rem 1.5rem;
+  background-image: url(/webp/form-bg.webp);
+  background-position: center bottom;
+  background-size: cover;
+  border-radius: 1.5rem;
+}
+
+/* @media (max-width:500px) {
+
+} */

@@ -8,6 +8,7 @@ import useBodyScroll from '../../../../hooks/useBodyScroll.jsx'
 import useClickOutside from '../../../../hooks/useClickOutside.jsx'
 import useCountryCode from '../../../../hooks/useCountryCode.jsx'
 import useCountryData from '../../../../hooks/useCountryData.jsx'
+import { useShowList } from '../../../../context/useShowList'
 // 組件 (component)
 import Flag from '../../../../components/Flag'
 import PhoneList from './PhoneList'
@@ -22,11 +23,13 @@ function CodeDrop() {
   const countryData = useCountryData(countryCode) || {}
   const { dialingCode = '66', exampleNumber = '21 234 567' } = countryData
 
-  const [showList, setShowList] = useState(false)
+  // const [showList, setShowList] = useState(false)
+  const { showList, setShowList } = useShowList()
   const codeBtnRef = useRef(null)
 
   const toggleList = () => {
-    setShowList((prev) => !prev)
+    // setShowList((prev) => !prev)
+    setShowList(!showList)
   }
 
   const handleSelect = (newCountryCode) => {

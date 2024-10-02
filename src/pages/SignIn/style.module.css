@@ -1,0 +1,27 @@
+.main {
+  height: 100vh;
+  background-image: url('/webp/bg.webp');
+  background-size: cover;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.left {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F1F3F9;
+}
+
+/* @media (max-width: 1000px) {
+
+} */
+
