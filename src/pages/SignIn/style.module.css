@@ -3,7 +3,6 @@
   background-image: url('/webp/bg.webp');
   background-size: cover;
   display: flex;
-  /* justify-content: space-around; */
 }
 
 .left {
@@ -24,4 +23,3 @@
 /* @media (max-width: 1000px) {
 
 } */
-

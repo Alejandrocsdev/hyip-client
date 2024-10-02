@@ -1,14 +1,18 @@
 .logo a {
   display: flex;
+  align-items: center;
 }
 
 .logo a img {
+  /* (span font-size * 2) */
+  height: 3em;
   margin-right: 5px;
   object-fit: cover;
-  aspect-ratio: 194 / 20;
 }
 
 .logo a span {
+  /* (img height / 2) */
+  font-size: 1.5em;
   color: #FFD45A;
   text-transform: uppercase;
   font-weight: 700;
