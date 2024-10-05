@@ -2,6 +2,7 @@
 import S from './style.module.css'
 // 函式庫 (library)
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
 // 自訂函式 (custom function)
 
@@ -17,6 +18,9 @@ import LangSwitch from '../../components/LangSwitch'
 
 // 登入
 function SignIn() {
+  // 語言
+  const { t } = useTranslation()
+
   const onSubmit = (data) => console.log(data)
 
   return (
@@ -30,21 +34,21 @@ function SignIn() {
       {/* 右邊 */}
       <div className={S.right}>
         <form className={S.form}>
-          <h1 className={S.title}>Sign In</h1>
-          <input className={S.input} name="username" type="text" placeholder="Username" />
+          <h1 className={S.title}>{t('signIn')}</h1>
+          <input className={S.input} name="username" type="text" placeholder={t('username')} />
           <Password />
           <Captcha />
           <div className={S.help}>
             <div className={S.message}>
-              <span>Forgot Password?</span>
-              <Anchor int="/reset">Reset</Anchor>
+              <span>{t('forgotPwd')}</span>
+              <Anchor int="/reset">{t('reset')}</Anchor>
             </div>
             <div className={S.message}>
-              <span>Do not have an account?</span>
-              <Anchor int="/sign-up">Sign Up</Anchor>
+              <span>{t('noAccount')}</span>
+              <Anchor int="/sign-up">{t('signUp')}</Anchor>
             </div>
           </div>
-          <Button>Sign In</Button>
+          <Button>{t('submit')}</Button>
         </form>
       </div>
       <div className={S.backdrop}></div>
