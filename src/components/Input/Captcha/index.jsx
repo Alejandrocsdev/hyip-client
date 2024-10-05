@@ -11,7 +11,7 @@ function Captcha({ style, onSubmit, children }) {
   const { captchaSrc, fetchCaptcha } = useCaptchaImg()
   return (
     <div className={S.captchaContainer}>
-      <input name="captcha" type="text" placeholder="Security Code" />
+      <input name="captcha" type="text" placeholder="Code" />
       <div className={S.captcha}>
         <img src={captchaSrc} />
       </div>

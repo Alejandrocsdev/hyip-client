@@ -17,9 +17,9 @@
 }
 
 .captchaContainer .captcha {
+  height: 53.6px;
   background-color: #ada8be;
   border: 2px solid black;
-
   position: relative;
   right: 4px;
 }
@@ -34,4 +34,28 @@
 
 .captchaContainer .refresh svg {
   font-size: 1.5rem;
+}
+
+@container (max-width: 500px) {
+  .left {
+    padding: 30px;
+    justify-content: left;
+  }
+
+  .left .logo img {
+    height: 1.5rem;
+  }
+
+  .left .logo span {
+    font-size: 0.75rem;
+  }
+
+  .left .langSwitch {
+    top: 15px;
+    right: 15px;
+  }
+
+  .right .form {
+    width: 100%;
+  }
 }
