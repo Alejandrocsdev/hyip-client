@@ -119,6 +119,7 @@
 
   .right {
     width: 100%;
+    min-width: 100%;
     padding: 30px;
   }
 
@@ -147,6 +148,6 @@
   }
 
   .right .form {
-    width: 350px;
+    width: 100%;
   }
 }
