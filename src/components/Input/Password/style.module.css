@@ -1,0 +1,28 @@
+.pwdContainer {
+  display: flex;
+  position: relative;
+}
+
+.pwdContainer input {
+  padding: 1rem;
+  width: 100%;
+  border-radius: .5rem;
+  border: .0625rem solid rgba(0, 0, 0, .08);
+  background-color: #fff;
+  color: #878199;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.pwdContainer .pwdState {
+  color: #878199;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.pwdContainer .pwdState svg {
+  font-size: 1.5rem;
+}

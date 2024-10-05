@@ -13,7 +13,7 @@ function Anchor({ int, ext, style, email, phone, target, onClick, children }) {
 
   const externalLink = (
     <a
-      href={email ? `mailto:${ext}` : phone ? `tel:${ext}` : ext}
+      href={email ? `mailto:${ext}` : (phone ? `tel:${ext}` : ext)}
       className={style}
       target={target || (email || phone ? '_self' : '_blank')}
       onClick={onClick}

@@ -1,0 +1,72 @@
+/* LangDrop */
+.dropdown {
+  max-height: 12.5rem;
+  padding: 1.0625rem 1.5rem 1.5rem;
+  color: #1e1e1e;
+  position: absolute;
+  top: 3.125rem;
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all .5s ease-in-out;
+}
+
+.dropdown::before {
+  content: "";
+  background-color: #fff;
+  border-radius: .5rem;
+  position: absolute;
+  top: .4375rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.dropdown li {
+  margin-top: .875rem;
+}
+
+.dropdown .triangle {
+  position: absolute;
+  right: 24.25px;
+  top: 0;
+  z-index: 200;
+}
+
+.dropdown li button {
+  display: flex;
+  align-items: center;
+  gap: .4375rem;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: .875rem;
+  line-height: 1.375rem;
+}
+
+.dropdown li button .langFlag {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown li button span {
+  color: rgb(30, 30, 30);
+  font-size: .875rem;
+  line-height: 1.375rem;
+}
+
+/* 切換樣式(LangDrop) */
+.showDrop {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+/* 切換樣式(共用) */
+.active {
+  font-weight: 700;
+  color: #ff5f45!important;
+}

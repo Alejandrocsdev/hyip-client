@@ -2,63 +2,53 @@
 import S from './style.module.css'
 // 函式庫 (library)
 import { useTranslation } from 'react-i18next'
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
+// 自訂函式 (custom function)
+import useBodyScroll from '../../hooks/useBodyScroll'
+import useClickOutside from '../../hooks/useClickOutside'
 // 組件 (component)
-import LangFlag from '../LangFlag'
-import TriangleSvg from '../Svg/TriangleSvg'
+import LangDrop from './LangDrop'
+import AngleDownSvg from '../Svg/dropdown/AngleDownSvg'
 
-function LangSwitch({ type, states, currentLang }) {
-  // 語言翻譯 / 語言設定
+// 選單組件
+function LangSwitch({ style }) {
+  // 語言設定
   const { i18n } = useTranslation()
-  // 路徑語言
-  const { lang } = useParams()
-  // 導航功能 / 路徑功能
-  const navigate = useNavigate()
-  const location = useLocation()
+  // 當前語言
+  const currentLang = i18n.language
 
-  const switchLang = (newLang) => {
-    i18n.changeLanguage(newLang)
-    const currentPath = location.pathname
-    const newPath = currentPath.replace(`/${lang}`, `/${newLang}`)
-    navigate(newPath)
-    // 切換語言即關閉選單
-    setIsOpened(false)
-  }
+  const [isOpened, setIsOpened] = useState(false)
+  const [hasBackdrop, setHasBackdrop] = useState(false)
 
-  // 二語言選單狀態控制
-  const { isOpened, setIsOpened } = states
+  const openStates = { isOpened, setIsOpened }
+  const containerRef = useRef(null)
 
-  // MobMenu: (無動畫)
-  const mobMenuStyle = S.MobMenu
+  const toggleDropdown = () => setIsOpened((prev) => !prev)
 
-  // LangDrop: (動畫: smooth open)
-  const langDropStyle = `${S.LangDrop} ${isOpened ? S.showList : ''}`
-  // 避免點擊 LangDrop 選單外側關閉選單
-  const langDropClick = type === 'pc' ? (e) => e.stopPropagation() : undefined
+  useBodyScroll(isOpened)
+
+  useClickOutside(containerRef, () => {
+    if (isOpened) toggleDropdown()
+  })
+
+  useEffect(() => setHasBackdrop(isOpened), [isOpened, setHasBackdrop])
 
   return (
-    <ul className={type === 'mob' ? mobMenuStyle : langDropStyle} onClick={langDropClick}>
-      <li>
-        <button onClick={() => switchLang('en')}>
-          <LangFlag className={S.langFlag} type="us" />
-          <span className={currentLang === 'en' ? S.active : ''}>English</span>
+    <>
+      {/* 語言按鈕 */}
+      <div className={`${S.container} ${style}`} ref={containerRef} onClick={toggleDropdown}>
+        {/* 語言按鈕 */}
+        <button className={S.langBtn}>
+          <span>{currentLang}</span>
+          <AngleDownSvg style={`${S.angleDown} ${isOpened ? S.arrowRotate : ''}`} />
         </button>
-      </li>
-      <li>
-        <button onClick={() => switchLang('ru')}>
-          <LangFlag className={S.langFlag} type="ru" />
-          <span className={currentLang === 'ru' ? S.active : ''}>Русский</span>
-        </button>
-      </li>
-      <li>
-        <button onClick={() => switchLang('et')}>
-          <LangFlag className={S.langFlag} type="ee" />
-          <span className={currentLang === 'et' ? S.active : ''}>Eesti</span>
-        </button>
-      </li>
-      {/* 延伸動畫選單三角形圖案 */}
-      {type === 'pc' && <TriangleSvg className={S.triangle} />}
-    </ul>
+        {/* 語言列表 */}
+        <LangDrop states={openStates} currentLang={currentLang} />
+      </div>
+
+      {/* backdrop */}
+      <div className={`${S.backdrop} ${hasBackdrop ? S.showBackdrop : ''}`}></div>
+    </>
   )
 }
 

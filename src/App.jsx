@@ -11,10 +11,8 @@ import Layout from './Layout'
 // 頁面
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-import Home from './pages/Home'
-import Contact from './pages/Contact'
-import CustomerData from './pages/CustomerData'
-import Complaints from './pages/Complaints'
+// 導向置頂組件
+import ScrollToTop from './components/ScrollToTop'
 
 const LangRoutes = () => {
   // path="/:lang/*"
@@ -48,10 +46,6 @@ const LangRoutes = () => {
       <Route path="sign-up" element={<SignUp />} />
 
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="contacts" element={<Contact />} />
-        <Route path="customer-data-processing" element={<CustomerData />} />
-        <Route path="complaints" element={<Complaints />} />
       </Route>
 
     </Routes>
@@ -61,6 +55,10 @@ const LangRoutes = () => {
 function App() {
   return (
     <BrowserRouter>
+
+      {/* 導向置頂 */}
+      <ScrollToTop />
+
       <Routes>
         <Route path="/:lang/*" element={<LangRoutes />} />
         <Route path="*" element={<Navigate to={`/${i18n.language}`} />} />

@@ -1,6 +1,6 @@
 .main {
-  height: 100vh;
-  background-image: url('/webp/bg.webp');
+  min-height: 100vh;
+  background-image: url('/bg.png');
   background-size: cover;
   display: flex;
 }
@@ -10,16 +10,129 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.left .logo img {
+  height: 3rem;
+}
+
+.left .logo span {
+  font-size: 1.5rem;
+}
+
+.left .langSwitch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .right {
   width: 40%;
+  min-width: 440px;
+  padding: 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #F1F3F9;
 }
 
-/* @media (max-width: 1000px) {
+.right .form {
+  width: 500px;
+  padding: 2rem 1.5rem;
+  background-image: url(/form-bg.webp);
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: white;
+}
 
-} */
+.right .form .title {
+  text-align: center;
+}
+
+.right .form .input {
+  padding: 1rem;
+  width: 100%;
+  border-radius: .5rem;
+  border: .0625rem solid rgba(0, 0, 0, .08);
+  background-color: #fff;
+  color: #878199;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.right .form .help {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* .container .help div {} */
+
+.right .form .help .message span {
+  margin-right: 8px;
+}
+
+.right .form .help .message a {
+  color: blue;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.right .form .help .message a:hover {
+  color: #ff5f45;
+}
+
+@media (max-width: 1000px) {
+  .left .logo img {
+    height: 2rem;
+  }
+
+  .left .logo span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    background-image: none;
+    background-color: #F1F3F9;
+    flex-direction: column;
+  }
+
+  .left {
+    width: 100%;
+    padding: 50px 0;
+    background-color: #041634;
+  }
+
+  .left .langSwitch {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+
+  .right {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .left {
+    padding: 30px 0;
+  }
+
+  .left .logo img {
+    height: 1.5rem;
+  }
+
+  .left .logo span {
+    font-size: 0.75rem;
+  }
+}

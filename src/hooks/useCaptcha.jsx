@@ -1,7 +1,7 @@
 // 函式庫 (library)
 import { useState, useEffect } from 'react'
 // 自訂函式 (custom function)
-import axios from '../api'
+import { axiosPrivate as axios } from '../api'
 
 // 取得CAPTCHA
 const useCaptchaImg = () => {
@@ -9,13 +9,7 @@ const useCaptchaImg = () => {
 
   const fetchCaptcha = async () => {
     try {
-      const response = await axios.get('/auth/captcha', {
-        responseType: 'blob',
-        // responseType: 'text',
-        withCredentials: true
-      })
-      console.log('response.data: ', response.data)
-      // setCaptchaSrc(response.data)
+      const response = await axios.get('/auth/captcha', { responseType: 'blob' })
       const imageUrl = URL.createObjectURL(response.data)
       setCaptchaSrc(imageUrl)
     } catch (error) {
@@ -36,13 +30,8 @@ const useCaptchaVerify = () => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const verifyCaptcha = async (captcha) => {
-    console.log('user: ', captcha)
     try {
-      const response = await axios.post(
-        '/auth/captcha/verify',
-        { captcha },
-        { withCredentials: true }
-      )
+      const response = await axios.post('/auth/captcha/verify', { captcha })
       if (response.data === 'Captcha verified') {
         setIsVerified(true)
       } else {

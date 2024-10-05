@@ -1,18 +1,14 @@
-.logo a {
+.logo .container {
   display: flex;
   align-items: center;
 }
 
-.logo a img {
-  /* (span font-size * 2) */
-  height: 3em;
+.logo .img {
   margin-right: 5px;
   object-fit: cover;
 }
 
-.logo a span {
-  /* (img height / 2) */
-  font-size: 1.5em;
+.logo .text {
   color: #FFD45A;
   text-transform: uppercase;
   font-weight: 700;

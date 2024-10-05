@@ -1,0 +1,37 @@
+.captchaContainer {
+  display: flex;
+}
+
+.captchaContainer input {
+  padding: 1rem;
+  width: 100%;
+  border-radius: .5rem;
+  border: .0625rem solid rgba(0, 0, 0, .08);
+  background-color: #fff;
+  color: #878199;
+  font-size: 1rem;
+  line-height: 1.25rem;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.captchaContainer .captcha {
+  background-color: #ada8be;
+  border: 2px solid black;
+
+  position: relative;
+  right: 4px;
+}
+
+.captchaContainer .refresh {
+  width: 53.6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.captchaContainer .refresh svg {
+  font-size: 1.5rem;
+}
