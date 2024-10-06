@@ -1,31 +1,59 @@
 .main {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 0 50px 80px 50px;
   background-image: url('/bg.png');
   background-size: cover;
   display: flex;
+  flex-direction: column;
 }
 
-.left {
-  width: 60%;
+.main .top {
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-.right {
-  width: 40%;
+/* .main .top .logo {} */
+
+.main .top .logo img {
+  height: 3rem;
+}
+
+.main .top .logo span {
+  font-size: 1.5rem;
+}
+
+.main .top .back {
+  color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #F1F3F9;
+  gap: 6px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
-.right .form {
-  width: 500px;
-  padding: 2rem 1.5rem;
-  background-image: url(/webp/form-bg.webp);
+.main .top .back:hover {
+  color: var(--orange);
+}
+
+.main .top .langSwitch {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
+
+/* .main .bottom {} */
+
+.main .bottom .form {
+  padding: 2rem 2rem 3rem 2rem;
+  background-image: url(/form-bg.webp);
   background-position: bottom;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 1.5rem;
   display: flex;
@@ -34,11 +62,23 @@
   background-color: white;
 }
 
-.right .form .title {
+.main .bottom .form .title {
   text-align: center;
 }
 
-.right .form .input {
+.main .bottom .form .inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.main .bottom .form .inputs .labeledInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main .bottom .form .inputs .input {
   padding: 1rem;
   width: 100%;
   border-radius: .5rem;
@@ -49,28 +89,21 @@
   line-height: 1.25rem;
 }
 
-.right .form .help {
+.main .bottom .form .buttons {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: space-evenly;
 }
 
-/* .container .help div {} */
-
-.right .form .help .message span {
-  margin-right: 8px;
+.main .bottom .form .buttons .button {
+  width: 25%;
 }
 
-.right .form .help .message a {
-  color: blue;
-  transition: 0.3s;
-  cursor: pointer;
+@media (max-width: 1000px) {
+  .left .logo img {
+    height: 2rem;
+  }
+
+  .left .logo span {
+    font-size: 1rem;
+  }
 }
-
-.right .form .help .message a:hover {
-  color: #ff5f45;
-}
-
-/* @media (max-width: 1200px) {
-
-} */

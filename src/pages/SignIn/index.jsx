@@ -4,8 +4,6 @@ import S from './style.module.css'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
-// 自訂函式 (custom function)
-
 // 組件 (component)
 import Logo from '../../components/Logo'
 import Anchor from '../../components/Anchor'
@@ -36,7 +34,7 @@ function SignIn() {
         <form className={S.form}>
           <h1 className={S.title}>{t('signIn')}</h1>
           <input className={S.input} name="username" type="text" placeholder={t('username')} />
-          <Password />
+          <Password name="password" placeholder={t('password')} />
           <Captcha />
           <div className={S.help}>
             <div className={S.message}>

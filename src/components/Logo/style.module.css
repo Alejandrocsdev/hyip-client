@@ -9,7 +9,7 @@
 }
 
 .logo .text {
-  color: #FFD45A;
+  color: var(--yellow);
   text-transform: uppercase;
   font-weight: 700;
   user-select: none;

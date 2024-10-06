@@ -2,7 +2,7 @@
   width: 100%;
   padding: .875rem 1.875rem;
   color: black;
-  background-color: #FFD45A;
+  background-color: var(--yellow);
   border-radius: .5rem;
   font-weight: 700;
   line-height: 1.25rem;
@@ -16,5 +16,17 @@
 
 .button:hover {
   color: white;
-  background-color: #041d33;
+  background-color: var(--dark-blue);
+}
+
+.contrast {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.contrast:hover {
+  color: white;
+  background-color: var(--orange);
+  border: none;
 }

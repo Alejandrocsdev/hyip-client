@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 // 密碼輸入欄
-function Password() {
+function Password({id, name, placeholder}) {
   // 語言
   const { t } = useTranslation()
 
@@ -20,7 +20,7 @@ function Password() {
 
   return (
     <div className={S.pwdContainer}>
-      <input name="password" type={showPwd ? 'text' : 'password'} placeholder={t('password')} />
+      <input id={id} name={name} type={showPwd ? 'text' : 'password'} placeholder={placeholder} />
       <div className={S.pwdState} onClick={togglePassword}>
         <FontAwesomeIcon icon={showPwd ? faEye : faEyeSlash} />
       </div>
